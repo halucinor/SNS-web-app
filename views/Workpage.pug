@@ -1,0 +1,146 @@
+html
+  head
+    title SMOL WorkPage
+    link(rel= "stylesheet", href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO", crossorigin="anonymous")
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css')
+    link(rel='stylesheet', href='css/WorkPage.css')
+  body
+    include NavigationBar.pug
+
+    .container-fluid.work-image-placeholder
+      .jumbotron.work-image-wrapper
+        .work-title-placeholder.h-100.w-100.d-flex.align-items-center.justify-content-center
+          h1.work-title-onimage #{workData.workTitle}
+        .work-title-btn-set
+          span.subscribe-number 구독자 1.1k
+          button.btn.btn-primary.work-subscribe-btn(type = 'button') 구독
+          button.btn.btn-success.work-image-change-btn(type = 'button') 이미지 업로드
+
+    .main
+      .main-contents-placeholder.d-flex.mt-2.ml-4
+        .author-profile-placeholder.mr-3
+          .author-profile-wrapper.rounded
+            .profile-card-placeholder.d-flex
+              .author-image-wrapper.d-inline-flex.justify-content-center.flex-column
+                img.profile-img(src = 'image/default-person.png')
+                .author-pagelink-wrapper
+                  a.author-page-link.font-weight-bold(href = '#') 홍길동
+              .profile-extra-information-placeholder.d-inline-flex.flex-column.w-100.justify-content-center.align-items-center
+                .information-wrapper.d-flex.justify-content-center.align-items-center
+                  span.mr-3
+                    a.work-link Work 
+                      span.work-number.font-weight-bold 5
+                  span.mr-3
+                    a.follower-link 팔로워 
+                      span.follower-number.font-weight-bold 68
+                  span
+                    a.follow-link 팔로우 
+                      span.follow-number.font-weight-bold 75
+            hr.m-2
+            .author-discription-wrapper.d-flex.flex-column.ml-4
+              label.font-weight-bold Description
+              .description
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, iusmod tempor incididunt ut labore et dolore magna aliqua...
+            .author-follower-btn-wrapper.d-flex.flex-row-reverse
+              button.btn.btn-sm.btn-primary.follow-btn.m-3 팔로우
+              
+              
+          .author-work-list-placeholder.mt-2 작품 목록
+            .author-work-list-wrapper
+              ul.author-work-list
+                li.work-list
+          
+        .work-contents-placeholder.d-inline-block
+          .work-contents-wrapper.rounded.p-3
+            .work-contents-title.text-center.d-flex.flex-column.m-3
+              h1.work-title #{workData.workTitle}
+              .work-information-wrapper.d-flex.justify-content-center.align-items-center.mt-3
+                span.views-wrapper.mr-4
+                  img.views-svg.mr-2(src = 'image/svg/eye.svg', alt='')
+                  span.views-number.font-weight-bold 1234
+                span.likes-wrapper.mr-4
+                  img.likes-svg.mr-2(src = 'image/svg/heart.svg', alt='')
+                  span.likes-number.font-weight-bold 45
+                span.subjects-wrapper.mr-4
+                  img.subjects-svg.mr-2(src = 'image/svg/list-unordered.svg', alt='')
+                  span.subjects-number.font-weight-bold 15
+                span.new-wrapper
+                  span.badge.badge-warning.badge-pill NEW
+            hr
+            .work-description-wrapper.ml-3
+              p.discription-title.font-weight-bold 소개
+              p.discription-contents #{workData.workDescription}
+            .work-edit-placeholder
+              .dropdown.position-absolute.update-delete-btn
+                button.btn.btn-sm.dropdown-toggle.caret-off(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') 
+                  img.kebab-horizontal(src = '/image/svg/kebab-horizontal.svg')
+                .dropdown-menu.dropdown-menu-right
+                  button.dropdown-item.workUpdateBtn(data-title = workData.workTitle data-workid = workData.workId data-description = workData.workDescription) 수정
+              
+          .work-subject-list-wrapper              
+            p.ml-3.font-weight-bold Subject 목록
+            ol.work-subject-list.list-group
+              li.work-subject.list-group-item.title-input-list
+                form.subject-submit-form
+                  .subject-input-wrapper
+                    input.form-control.subject-input.mr-3(autocomplete = 'off',type = 'text',name = 'subjectTitle', placeholder = 'Subject 타이틀을 입력하세요!')
+                    button.btn.btn-primary.subject-plus-btn(type = 'button') Subject 생성
+              each subject in subjectLists
+                -subjectTitle = subject.subjectTitle
+                -subjectId = subject.subjectId
+                li.work-subject.list-group-item.title-list
+                  .subjcet-link-wrapper
+                    a.subject-link(href=`/cardView?workId=${workData.workId}&subjectId=${subjectId}`) #{subjectTitle}
+                  a.btn.btn-success.subject-edit-link-btn(href=`/cardEditor?workId=${workData.workId}&subjectId=${subjectId}`, role='button') 편집
+                  .dropdown.position-absolute.subject-update-delete-btn.align-horizontal-center
+                    button.btn.dropdown-toggle.caret-off(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') 
+                      img.kebab-horizontal(src = '/image/svg/kebab-horizontal.svg')
+                    .dropdown-menu.dropdown-menu-right
+                      button.dropdown-item.subject-update-btn(data-title = subjectTitle data-subjectid = subjectId) 수정
+                      a.dropdown-item(href = `/subjectDelete/${workData.workId}/${subjectId}`) 삭제
+        .empty-content-placeholder
+    
+      #subjectUpdateModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='subjectUpdateModal', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h4.modal-title.w-100.font-weight-bold Subject 수정
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body.mx-1
+              form#subjectUpdateForm(action = '/subjectUpdate' name = 'subjectUpdateForm' method = "post")
+                .md-form.mb-1
+                  label 제목
+                  input#updateSubjectTitleInput.form-control.validate(autocomplete='off', name = 'subjectTitle',type='text', placeholder = 'Subject의 제목을 입력하세요!')
+                  input#subjectIdInput.form-control.validate(autocomplete='off', name = 'subjectId',type='hidden')
+                  input#workIdInput.form-control.validate(autocomplete='off', name = 'workId',type='hidden' value = workData.workId)
+                    
+            .modal-footer.d-flex.justify-content-right
+              button.btn.btn-primary.subject-update-submit(type = 'submit' form = 'subjectUpdateForm') 수정
+              button.btn.btn-default(type = 'button' data-dismiss ='modal') 취소
+
+      #workUpdateModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='workUpdateModal', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h4.modal-title.w-100.font-weight-bold Work 수정
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body.mx-1
+              form#workUpdateForm(action = '/workUpdate' name = 'workUpdateForm' method = "post")
+                .md-form.mb-1
+                  label 제목
+                  input#updateWorkTitleInput.form-control.validate(autocomplete='off', name = 'workTitle',type='text', placeholder = 'Work의 제목을 입력하세요!')
+                  label 설명
+                  textarea#workDescriptionInput.form-control.validate(autocomplete='off', name = 'workDescription',type='text', placeholder = 'Work의 설명을 입력하세요!' rows= '3')
+                  input#workIdInput.form-control.validate(autocomplete='off', name = 'workId',type='hidden')
+            .modal-footer.d-flex.justify-content-right
+              button.btn.btn-primary.work-update-btn(type = 'submit' form = 'workUpdateForm') 수정
+              button.btn.btn-default(type = 'button' data-dismiss ='modal') 취소
+
+    
+    script(src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src = 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity ='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy", crossorigin="anonymous")
+    script(src="https://code.jquery.com/ui/1.12.0/jquery-ui.js", integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=", crossorigin="anonymous")
+    script(src='js/workPage.js')

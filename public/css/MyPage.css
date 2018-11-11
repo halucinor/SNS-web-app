@@ -1,0 +1,122 @@
+.work-card-wrapper {
+  width: 15rem;
+  height: 16rem;
+}
+textarea {
+   resize: none;
+}
+.work-card-wrapper img {
+  /* height: 200px; */
+}
+
+.card-body {
+  text-align: center;
+}
+
+.mypage-nav-list-placeholder {
+  width: 250px;
+}
+
+.jumbotron {
+  padding: 32px;
+  background-color: rgb(233, 233, 233);
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-name:hover {
+  cursor: pointer;
+}
+
+.user-image {
+  width: 150px;
+}
+
+.information-wrapper>span {
+  font-size: 18px;
+}
+
+.information-wrapper a:hover {
+  cursor: pointer;
+}
+
+.work-sort-search-bar-wrapper {
+  /* background-color:rgb(224, 224, 224); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.form-group {
+  margin: 0;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.work-card-container {
+  position: relative;
+}
+
+.work-card-placeholder {
+  position: relative;
+  list-style-type: none;
+  /*to remove bullets*/
+  /* text-align: center; */
+  margin: 0 auto;
+  padding: 0px;
+  /* white-space: nowrap; */
+  /* left: -14px; */
+}
+
+.work-card-wrapper {
+  float: left;
+  margin-right: 13px;
+  margin-left: 13px;
+}
+
+.card-body {
+  position: relative;
+}
+
+.caret-off::before {
+  display: none;
+}
+
+.caret-off::after {
+  display: none;
+}
+.update-delete-btn{
+  display: inline-block;
+  position: absolute !important;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.caret-off {
+  background-color: rgb(237, 237, 237);
+}
+.dropdown-menu{
+  z-index : 1100;
+}
+.align-horizontal-center{
+  top: 50%;
+  transform: translateY(-50%);
+}

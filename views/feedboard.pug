@@ -1,0 +1,67 @@
+html(lang='ko')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+    link(rel='stylesheet', href='css/feedboard.css')
+    title SMOL Feedboard
+    
+  body
+    include NavigationBar.pug
+    include Footer.pug
+    .container-fluid.mt-2.mb-2
+      .jumbotron
+        h2.display-5
+          img(src='image/svg/organization.svg', style='height : 3em; width : 1em;')
+          | People
+        div.lead
+          | 여러분이 관심 가질만한 
+          strong 유저
+          | 들의 콘텐츠가 전시됩니다.
+    .container
+      
+      .row
+        .col-sm-8
+          each card in subject.cardList          
+            -cardContents = card.card
+            -cardId = card.cardId
+            .card(style='margin-top:5px;')
+              .card-header
+                span
+                  img(src='image/svg/person.svg')
+                  | 홍길동
+                  img(src='image/svg/heart.svg', style='margin-left : 2em;')
+                  | 10,000
+                span.float-right(style='color : gray;') 작성일 : 2018.10.22            
+              .card-body
+                .card-wrapper!= cardContents
+              .card-footer
+                img(src='image/svg/eye.svg')
+                | 133 
+                img(src='image/svg/thumbsup.svg')
+                | 123
+              
+            
+        .col-sm-4
+          .list-group
+            a.list-group-item.list-group-item-action.active(href='#')
+              | 관심있어할만한 사람
+            a.list-group-item.list-group-item-action(href='#') 홍길동
+            a.list-group-item.list-group-item-action(href='#') 이름름
+            a.list-group-item.list-group-item-action(href='#') Porta ac consectetur ac
+            a.list-group-item.list-group-item-action(href='#') Vestibulum at eros
+          hr.my-3
+          .list-group
+            a.list-group-item.list-group-item-action.active(href='#')
+              | 팔로워 목록
+            a.list-group-item.list-group-item-action(href='#') 이름름
+            a.list-group-item.list-group-item-action(href='#') Morbi leo risus
+            a.list-group-item.list-group-item-action(href='#') Porta ac consectetur ac
+            a.list-group-item.list-group-item-action.disabled(href='#') Vestibulum at eros
+
+
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')

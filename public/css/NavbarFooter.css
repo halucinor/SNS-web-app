@@ -1,0 +1,16 @@
+.navbar {
+  background-color: #8497B0;
+  height: 50px;
+}
+
+.footer {
+  background-color: #8497B0;
+}
+
+.contents-search{
+  width : 400px !important;
+}
+
+.mini-profile-img{
+  height: 30px;
+}

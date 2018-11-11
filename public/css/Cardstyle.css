@@ -1,0 +1,331 @@
+.editorWrapper {
+  min-width: 1024px;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fafafa;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar {
+  background-color: #8497B0;
+}
+
+.footer {
+  background-color: #8497B0;
+}
+
+.container {
+  padding-top: 5px;
+}
+
+.editorWrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.thumnailWrapper {
+  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  min-width: 200px;
+  height: 100%;
+  margin-right: 5px;
+  box-shadow: 2px 2px 2px grey;
+  overflow: hidden;
+}
+
+.thumnailURL{
+  /* margin : 1px; */
+}
+
+.subjectNav {
+  min-height: 50px;
+}
+
+.cardEditorWarpper {
+  background-color: #b8cdcb;
+  height: 100%;
+  width: 95%;
+  display: block;
+}
+
+main {
+  height: 85%;
+  width: 100%;
+  min-height: 780px;
+  min-width: : 970px;
+}
+
+.editbuttonSet {
+  display: none;
+  position: relative;
+  background-color: white;
+  border: solid 1px darkgray;
+  padding: 3px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+}
+
+.tabWrap {
+  padding: 10px;
+  padding-top: 40px;
+  margin-left: 50px;
+  width: 500px;
+  min-width: 500px;
+  min-height: 640px;
+  height: 640px;
+  /* background-color: white; */
+}
+
+.card_edit {
+  position: relative;
+  width: 300px;
+  height: 553px;
+  min-width: 300px;
+  min-height: 553px;
+  top: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardEditor {
+  margin-top: 25px;
+  margin-left: 230px;
+  display: flex;
+  flex-direction: row;
+}
+
+.tab-pane {
+  height: 200px border: 1px solid gray;
+}
+
+.tab-content {
+  height: 300px;
+  border-left: 1px solid #ccbaba;
+  border-right: 1px solid #ccbaba;
+  border-bottom: 1px solid #ccbaba;
+  background-color: white;
+}
+
+#controlTab {
+  margin-top: 100px;
+}
+
+.cardcont {
+  overflow: visible;
+  overflow-x: visible;
+  overflow-y: visible;
+  box-sizing: border-box;
+}
+
+.card_doc {
+  background-color: lightgrey;
+  width: 300px;
+  border: 25px solid green;
+  padding: 25px;
+  margin: 25px;
+
+}
+
+.row_card {
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+
+}
+
+.fontstyledropdown {
+  width: 7em;
+}
+
+.colorbox_container {
+  width: 250px;
+  height: 150px;
+  padding: 5px;
+  background-color: white;
+}
+
+.colorbox {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+}
+
+.saveWrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 80%;
+}
+
+.thumnailImg {
+  /* margin: 5px; */
+  width : 90px;
+  border: 1px solid gray;
+  margin : 5px;
+  /* margin-left: 40px; */
+  margin-bottom: 30px;
+  display: block;
+
+}
+
+.plusCardbtn {
+  position: absolute;
+  left: 790px;
+  top: 680px;
+  width: 50px;
+  height: 50px;
+  padding: 0px;
+}
+
+.thumnaillistPlaceHolder{
+  margin-bottom: 10px;
+
+}
+
+.work-title{
+  /* content : attr(placeholder); */
+  text-align: center;
+  color : gray;
+  padding: 10px;
+  font-size: 24pt;
+  font-family: Georgia;
+
+}
+.subjectInputGroup{
+  display : block;
+  text-align: center;
+  width : 180px;
+  top : 40px;
+}
+.thumnaillist{
+  overflow: auto;
+  width : 170px;
+}
+
+#dragbar[data-directon='col'] {
+  background-image:  url('/image/arrow.svg');
+  background-size: 30px;
+  border-radius: 30%;
+  left: -40px;
+  top: 260px;
+  width: 30px;
+  height: 30px;
+  min-height: 2px;
+  cursor: row-resize;
+  position: absolute;
+  z-index: 10;
+}
+
+#dragbar[data-directon='row'] {
+  background-image:  url('/image/arrow.svg');
+  background-size: 30px;
+
+  left: 135px;
+  top: 555px;
+  width: 30px;
+  height: 30px;
+  min-height: 2px;
+  transform: rotate(90deg);
+  cursor: col-resize;
+  position: absolute;
+  z-index: 10;
+}
+
+.color-picker {
+  width: 30px;
+  height: 30px;
+  padding: 7px;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+.bcPicker-palette {
+  top: 36px !important;
+}
+
+.card-part-btn {
+  background-color: white;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.watermark {
+  position: absolute;
+  pointer-events: none;
+  color: lightgrey;
+  bottom: 5px;
+  right: 5px;
+}
+
+.layoutWarpper {
+  position: absolute;
+  display: inline-block;
+  left: 520px;
+  top: 20px;
+  z-index: 5;
+}
+
+.card_edit .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  z-index: 30;
+  cursor: pointer;
+  opacity: .05;
+  cursor: pointer;
+}
+
+.part{
+  /* overflow: hidden; */
+}
+.part.imgpart{
+display: flex;
+align-items:center;
+overflow: hidden;
+}
+.part:hover #close {
+opacity: 1;
+}
+
+[contenteditable=true]:empty:before {
+content: attr(placeholder);
+color:grey;
+font-style: italic;
+display: block; /* For Firefox */
+font-size : 11pt;
+}
+.thumnail-order{
+  padding-left : 30px;
+}
+
+.thumnail-list{
+  list-style-type: none;
+  margin-bottom: : 20px;
+}
+
+.watermark {
+   -ms-user-select: none;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   user-select: none;
+ }

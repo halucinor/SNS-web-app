@@ -1,0 +1,50 @@
+.jumbotron{
+  justify-content: center;
+  background: url("/image/marketting.jpg") no-repeat center center;
+  background-size: cover;
+}
+.jumbotron > .lead{
+  justify-content: center;
+  text-align: center;
+  /* color: white; */
+  font-weight: bold;
+}
+.card-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-display {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+.card_edit.row {
+  display: inline-flex;
+}
+
+.part {
+  overflow: hidden;
+}
+
+.part.imgpart {
+  display: flex;
+  align-items: center;
+}
+
+.part:hover #close {
+  opacity: 1;
+}
+
+.watermark {
+  position: absolute;
+  pointer-events: none;
+  color: lightgrey;
+  bottom: 5px;
+  right: 5px;
+}

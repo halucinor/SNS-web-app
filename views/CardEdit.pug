@@ -1,0 +1,200 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title SMOL Card editor page
+    link(rel= "stylesheet", href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO", crossorigin="anonymous")
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css')
+    link(rel='stylesheet', href = 'css/colorPick.min.css') 
+    link(rel= 'stylesheet', href = 'css/Card.css')
+    link(rel= 'stylesheet', href = 'css/CardEditor.css')
+    link(rel= 'stylesheet', href = 'css/IconStyle.css')
+    link(rel= 'stylesheet', href = 'css/customRange.css')
+  body
+    include NavigationBar.pug
+    .editor-wrapper.d-flex.h-100.w-100
+      .editor-wrapper.w-100        
+        .editor-nav-bar.w-100.d-flex.align-items-center.justify-content-center.p-1
+          .work-title.subject-title.mr-3.ml-1
+            h3.worktitle.text-center.font-weight-bold.mt-1
+              a(href=`/workpage?workId=${workId}`, style = 'text-decoration:none; color: inherit') !{workTitle}
+          div.mr-5
+            .subjectInputGroup.w-100.pl-2
+              .input-group
+                input.form-control.input-group-lg(type='text', style='display: inline-block;', aria-label='subject input with dropdown button'
+                 placeholder ='Subject title PlaceHolder' value=`${subjectTitle}`) 
+                .input-group-btn(style='display: inline-block;') 
+                  button.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  .dropdown-menu.dropdown-menu-right
+                    -var subjectLists = subjectData
+                      each item in subjectLists
+                        a.dropdown-item(href = `/cardEditor?workId=${workId}&subjectId=${item.subjectId}`) !{item.subjectTitle}
+          
+        
+          .save-place.ml-auto
+            span.loading.mr-2.blinkcss.hidden
+             | 저장 중...
+            button#cardSave.btn.btn-primary(type='button') 작업 저장
+        .contents-display-wrapper
+          .thumnailWrapper
+            .thumnailList.d-flex.flex-column.align-items-center
+              ol.thumnail-order
+                -var cardList = cardData
+                  if (cardList)
+                    each item in cardList
+                      li.thumnail-item
+                        | !{item.cardContents}
+                        span.trash-can-btn.position-absolute
+                          img.trash-can(src = '/image/svg/trashcan.svg')
+          .d-flex.align-items-center.justify-content-center
+            .editbuttonSet.my-2
+              div.mr-3(role='group')
+                button.text-edit-btn.btn.btn-outline-primary.btn-sm(data-command ='justifyLeft', type='button')
+                  img(src='image/justifyLeft.svg', height='10', width='10')
+                button.text-edit-btn.btn.btn-outline-primary.btn-sm(data-command ='justifyCenter', type='button')
+                  img(src='image/justifyCenter.svg', height='10', width='10')
+                button.text-edit-btn.btn.btn-outline-primary.btn-sm(data-command ='justifyRight', type='button')
+                  img(src='image/justifyRight.svg', height='10', width='10')
+                button.text-edit-btn.btn.btn-outline-primary.btn-sm(data-command ='justifyFull', type='button')
+                  img(src='image/justifyFull.svg', height='10', width='10')
+                    
+              div.mr-3.d-flex(role='group')
+                button.text-edit-btn.btn.btn-outline-primary.btn-sm.mr-1(data-command = 'bold',type='button')
+                  strong B
+                button.text-edit-btn.btn.btn-outline-primary.btn-sm.mr-1(data-command = 'italic',type='button')
+                  i A
+                button.text-edit-btn.btn.btn-outline-primary.btn-sm.mr-1(data-command = 'underline',type='button')
+                  u U
+                #textColorChange.text-edit-btn.d-inline-block(data-command = 'foreColor')
+                  .text-color-btn
+                    img.text-svg(src='image/svg/text.svg')
+              div.mr-3(role='group')
+                .dropdown.d-inline-block.mr-2
+                  button#fontSizeBtn.fontsize-dropdown.btn.btn-outline-primary.btn-sm.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                    span.fontSize 12
+                  .dropdown-menu.fontsize-menu(aria-labelledby='dropdownMenu2', data-toggle = 'buttons')                    
+                    button.dropdown-item.fontsize-item(data-fontsize = '8', name='options') 8
+                    button.dropdown-item.fontsize-item(data-fontsize = '12' name='options') 12
+                    button.dropdown-item.fontsize-item(data-fontsize = '16' name='options') 16
+                    button.dropdown-item.fontsize-item(data-fontsize = '20' name='options') 20
+                    button.dropdown-item.fontsize-item(data-fontsize = '24' name='options') 24
+                    button.dropdown-item.fontsize-item(data-fontsize = '36' name='options') 36
+                
+                .dropdown.d-inline-block
+                  button#fontFamily.fontFamily-dropdown.btn.btn-outline-primary.btn-sm.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                    span.fontFamily FontFamily
+                  .dropdown-menu.fontFamily-menu(aria-labelledby='dropdownMenu2', data-toggle = 'buttons')              
+                      
+              div    
+                label.btn.btn-outline-primary.btn-sm(style='margin : 2px')
+                  img.image-input(src = '/image/svg/image.svg')
+                  input#imgInput(type='file', style='display: none;', accept='image/*')
+            div.empty-place
+          .card-wrapper
+            .contents.d-flex.flex-row
+              .card-editor-asset-wrapper
+                div.range-control-wrapper
+                  input.range-control#verticalRange(type='range', orient='vertical', min = '0', max = '6', step = '1')
+                  input.range-control.hidden#horizentalRange(type='range', orient='vertical', min = '0', max = '4', step = '1')               
+                .card-editor-wrapper
+                  #editField.card-editor.rounded(data-cardId= '')
+                    #upper.part(spellcheck='false',contenteditable= 'true', style='width: 252px; height: 224px; background-color: transparent; margin : 7px; padding: 3px; position: relative; display : inline-block;', placeholder='내용을 작성하세요!')
+                    #downer.part(spellcheck='false',contenteditable= 'true', style='width: 252px; height: 224px; background-color: transparent; margin : 7px; padding: 3px; position: relative; display : inline-block;', placeholder='내용을 작성하세요!')
+
+                .card-plus-btn-wrapper.w-100.d-flex.justify-content-center
+                  div#card-plus-btn.pt-5
+                    img.plus-svg(src='/image/svg/diff-added.svg')
+                  
+              .card-controller-panel-wrapper.ml-4
+                .card-controll-panel.rounded
+                  ul#Tab.nav.nav-tabs(role='tablist')
+                    li.nav-item
+                      a#cardControl-tab.nav-link.active(data-toggle='tab', href='#cardControl', role='tab', aria-controls='cardControl', aria-selected='true') 카드 편집
+                    li.nav-item
+                      a#adControl-tab.nav-link.not-active(data-toggle='tab', href='#adControl', role='tab', aria-controls='adControl', aria-selected='false') 준비중
+                  
+                  #TabContent.tab-content
+                    #cardControl.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='cardControl-tab').overflow-scroll
+                      ul.card-control-list.pl-2
+                        li.layout-control.mt-2
+                          div.my-2.text-center
+                            span 카드 레이아웃
+                          .part-layout-selector-warpper.w-100.d-inline-flex.justify-content-center
+                            .div(data-toggle='buttons')
+                              label.card-part-btn.btn.btn-outline-primary.mr-2(data-part = 0)
+                                input#option1(type='radio', style='display: none;', name='options')
+                                img(src='image/singlePart.svg', height='30', width='30')
+                              label.card-part-btn.btn.btn-outline-primary.mr-2.active(data-part = 1)
+                                input#option2(type='radio', style='display: none;', name='options')
+                                img(src='image/updownPart.svg', height='30', width='30')
+                              label.card-part-btn.btn.btn-outline-primary.mr-2(data-part = 2)
+                                input#option3(type='radio', style='display: none;', name='options')
+                                img(src='image/rightleftPart.svg', height='30', width='30')
+                                  
+                        hr.mx-2
+                        li.font-control
+                          div.mb-2.text-center
+                            span 텍스트
+                          table.font-control-table.table.table-hover.borderless
+                            tbody
+                              tr
+                                th(scope = 'row').row-head 
+                                td.d-flex.justify-content-center
+                                  button#E-PostIT.btn.btn-primary(type='button')
+                                    sapn(style='text-decoration: overline') E-PostIT
+                        hr.mx-2
+                        li.background-control
+                          div.mb-2.text-center
+                            span 카드 배경
+                          table.font-control-table.table.table-hover.borderless
+                            tbody
+                              tr
+                                th(scope = 'row').row-head 
+                                td.d-flex.justify-content-around
+                                  label#backgroundImage.btn.btn-outline-primary.background-image-btn
+                                    img.background-image-input(src = '/image/svg/image.svg')
+                                    input#backGroundImginput(type='file', style='display: none;', accept='image/*')      
+                                  label#backgroundColor.background-color-btn
+                                    .background-colorpick.text-center(data-initialcolor="#ffffff") 배경색
+                                  label#backgroundReset.background-reset-btn.btn.btn-outline-primary
+                                    span.font-weight-bold.text-primary Reset
+                    #adControl.tab-pane.fade(role='tabpanel', aria-labelledby='adControl-tab')
+
+
+    script(src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")                
+    
+    script.
+      const pageData = { workId : '#{workId}',
+                        subjectId : '#{subjectId}'};
+      $(document).ready(function(){    
+    
+      var textstyle = new Array('굴림', '굴림체', '돋움', '돋움체', '바탕', 'Arial', 'Courier', 'Fixedsys', 'Impact', 'Lucida', 'Blackletter');
+    
+      for (style of textstyle) {
+        $('.fontFamily-menu').append($(document.createElement('button')).attr(
+        {'class' : 'dropdown-item fontFamily-item',
+        'data-fontfamily' : style}).text(style));
+      }
+      if($('.thumnail-item').length === 0){
+        let thumnail = document.createElement("li");
+        let trashIcon = `<span class="trash-can-btn position-absolute">
+                        <image class="trash-can" src="/image/svg/trashcan.svg"></image>
+                      </span>`;
+  
+        $(thumnail).addClass('thumnail-item editing');
+        $('#editField').clone(true).addClass('thumnail-card-transform').removeAttr('id').appendTo($(thumnail));
+        $(thumnail).append(trashIcon);
+        $(thumnail).appendTo('.thumnail-order');
+      }else{
+        let firstItem = $('.thumnail-item').first().addClass('editing').find('.card-editor');
+        $('.card-editor-wrapper').empty();
+        firstItem.clone(true).removeClass('thumnail-card-transform').attr('id', 'editField').appendTo('.card-editor-wrapper');
+        firstItem.find('.modal').remove();
+      }
+      });
+    script(src = 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity ='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy", crossorigin="anonymous")
+    script(src="https://code.jquery.com/ui/1.12.0/jquery-ui.js", integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=", crossorigin="anonymous")
+    script(src='js/colorPick.min.js')
+    script(src='js/CardEditor2.js')
+    script(src='js/imageSave.js')

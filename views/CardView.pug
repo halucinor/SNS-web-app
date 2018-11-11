@@ -1,0 +1,115 @@
+html
+  head
+    title SMOL 뷰페이지
+    link(rel= "stylesheet", href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO", crossorigin="anonymous")
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css')
+    link(rel= 'stylesheet', href = 'css/card.css')
+    link(rel= 'stylesheet', href = 'css/ViewPage.css')
+    link(rel= 'stylesheet', href = 'css/PageLayout.css')
+
+  body
+    include NavigationBar.pug
+    include Footer.pug
+
+    
+    div.main
+      div.left-wrapper
+        div.subject-nav-placeholder
+          div.work-title-wrapper
+            div.work-title
+              a.work-link(href =`/workpage?workId=${workId}`)= workTitle
+          div.subject-nav
+            div.dropdown
+              button#dropdownMenuButton.btn.btn-outline-secondary.dropdown-toggle.subject-nav-manu-btn(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                span.subject-title= subjectTitle
+              .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                each subject in subjectData
+                  a.dropdown-item(href=`/cardView?workId=${workId}&subjectId=${subject.subjectId}`)= subject.subjectTitle
+        div.author-profile-placeholder
+          div.author-information-wrapper
+            div.author-img-wrapper
+              img.author-img(src ='image/default-person.png')
+            div.author-profile-wrapper
+              div.author-profile-flex
+                div.author-page-link-wrapper
+                  a.author-page-link(href='#') 작가 닉네임
+                div.author-follow-support-btn-wrapper
+                  button.btn.btn-primary.author-btn.author-follow-btn(type='button') 팔로우
+                  button.btn.btn-primary.author-btn.author-support-btn(type='button') 후원
+        
+        div.work-subscribe-placeholder
+          div.work-subscribe-wrapper
+            span.work-subscribe-text 작품을 구독하고 업데이트를 빠르게 전달 받으세요!
+            div.work-subscribe-button-wrapper
+              button.btn.btn-primary(type='button') 구독
+    
+      div.card-display-wrapper    
+        div.modal-btn-wrapper
+          button.btn.btn-secondary.view-modal-btn.btn-sm(type='button' data-toggle = 'modal', data-target = '#viewModal') ViewModal
+        div.card-display
+          .card-nav-btn.left-btn
+            img.arrow-image(src='image/left-arrow.svg')
+          .card-nav-btn.right-btn 
+            img.arrow-image(src='image/right-arrow.svg')
+          .card-share-btn-placeholder
+            .card-share-btn-wrapper
+              div.share-text Share
+              div.facebook-share-btn
+                img.facebook-share-img(src='image/facebook-share.png')
+              div.twitter-share-btn
+                img.twitter-share(src='image/twitter-share.png')
+              div.google-share-btn
+                img.google-share(src='image/google+.png')
+              div.kakao-share-btn
+                img.kakao-share(src='image/kakao-share.png')
+            
+        .card-text-nav-wrapper        
+          button.btn.btn-secondary.first-card-btn 첫 카드
+          button.btn.btn-secondary.last-card-btn 끝 카드
+          div.card-text-nav-wrapper
+            input.card-text-input.no-spinners(type= 'number', min = 1, size = 4, max = 4, value = 1)
+            label.total-cards-label / 
+              span.total-cards-number
+            button.card-text-nav-btn.btn.btn-primary 이동
+      div.right-wrapper
+      
+      #viewModal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+        .view-close-btn(data-dismiss="modal")
+          img(src='image/cancel.svg')
+        .modal-dialog.modal-dialog-centered.custom-dialog(role='document')
+          .modal-content.contents-wrapper
+            .modal-card-display
+              .modal-card-nav-btn.left 
+                img.arrow-image(src='image/left-arrow.svg')
+              .modal-card-nav-btn.right
+                img.arrow-image(src='image/right-arrow.svg')
+              .contents-display
+            div.card-text-nav-container
+              button.btn.btn-secondary.first-card-btn 첫 카드
+              button.btn.btn-secondary.last-card-btn 끝 카드
+              div.card-text-nav-wrapper
+                input.card-text-input.no-spinners(type= 'number', min = 1, size = 4, max = 4, value = 1)
+                label.total-cards-label / 
+                  span.total-cards-number
+                button.card-text-nav-btn.btn.btn-primary 이동
+              
+    div.card-list-container
+      span.scroll-arrow.left-arrow <
+      div.card-list-wrapper
+        ul.card-order
+          each item in cardData
+            li.thumnail-item
+              | !{item.cardContents}
+              span.card-number= item.cardNumber
+      span.scroll-arrow.right-arrow >
+    
+  
+
+
+    script(src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src = 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity ='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy", crossorigin="anonymous")
+    script(src="https://code.jquery.com/ui/1.12.0/jquery-ui.js", integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=", crossorigin="anonymous")
+    script(src='js/ViewPage.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js')

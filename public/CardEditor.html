@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/colorPick.css">
+  <link rel="stylesheet" href="css/Cardstyle.css">
+
+  <style type="text/css">
+    .navbar {
+      background-color: #8497B0;
+    }
+
+    body {
+      padding-top: 50px;
+      background-color: #E6E8EC !important;
+    }
+  </style>
+
+  <title>SMOL Contents Editor</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+    <a class="navbar-brand  mr-1" href="index.html">Brand</a>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto ml-2">
+        <li class="nav-item mr-3  active">
+          <a class="nav-link" href="#"> 소개 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mr-3 ">
+          <a class="nav-link" href="#"> 마이페이지 </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          콘텐츠게시판
+        </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">실시간 이슈</a>
+            <a class="dropdown-item" href="#">Top100</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">피드</a>
+          </div>
+
+        </li>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0 mr-5">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-white my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+
+    </div>
+
+    <a class="navbar-brand  nav-link pull-right" href="#"> <img src="svg/person.svg"></img><span class="badge"> 16 </span> </a>
+    <a class="navbar-brand  nav-link" href="CardEditor.html"> <img src="svg/pencil.svg"></img> </a>
+    <a class="navbar-brand  nav-link" href="#"> <img src="svg/book.svg"></img><span class="badge">5</span> </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  </nav>
+
+
+  <!-- WARNING:  --><br><br>
+  <hr>
+
+  <div class="container">
+    <div class="editbuttonSet rounded">
+      <div class='textalign btn-group' role='group'>
+        <button type='button' class='card-edit-btn btn btn-outline-primary btn-sm' id='justifyLeft'>
+       <img src = 'image/justifyLeft.svg' height = '10' width = '10' /></button>
+        <button type='button' class='card-edit-btn btn btn-outline-primary btn-sm' id='justifyCenter'>
+       <img src = 'image/justifyCenter.svg' height = '10' width = '10' /></button>
+        <button type='button' class='card-edit-btn btn btn-outline-primary btn-sm' id='justifyRight'>
+       <img src = 'image/justifyRight.svg' height = '10' width = '10' /></button>
+        <button type='button' class='card-edit-btn btn btn-outline-primary btn-sm' id='justifyFull'>
+       <img src = 'image/justifyFull.svg' height = '10' width = '10' /></button>
+      </div>
+      <div class='textstyle btn-group' role='group'>
+        <button type='button' class='card-edit-btn btn btn-outline-primary btn-sm' id='bold'>
+          <strong>A</strong></button>
+        <button type='button' class='card-edit-btn btn btn-outline-primary btn-sm' id='italic'>
+          <i>A</i></button>
+        <button type='button' class='card-edit-btn btn btn-outline-primary btn-sm' id='underline'>
+          <u>U</u></button>
+        <button type='button' class='btn btn-outline-primary btn-sm' id='textcolorchange'>
+          <u>A</u></button>
+      </div>
+
+
+      <!-- 글자 크기 변경 -->
+      <span class='dropdown'>
+        <button class='fontdropdown btn btn-outline-primary btn-sm dropdown-toggle' type='button' id='fontsizeMenuButton' data-toggle='dropdown' aria-haspopup="true" aria-expanded="false">
+            <img src = 'image/text-size.svg' />
+          3px</button>
+        <div class="dropdown-menu FontSize-item" aria-labelledby="dropdownMenuButton">
+        </div>
+      </span>
+      <!-- 폰트 변경 -->
+      <span class='dropdown'>
+        <button class='fontstyledropdown btn btn-outline-primary btn-sm dropdown-toggle' type='button' id='fontsizeMenuButton' data-toggle='dropdown' aria-haspopup="true" aria-expanded="false">Font</button>
+        <div class="dropdown-menu fontstyle-item" aria-labelledby="dropdownMenuButton">
+        </div>
+      </span>
+
+    </div>
+
+    <div class="row" style="background-Color : white">
+      <div class="col-sm-2" style="background-color:gray;">
+      </div>
+
+      <form class="cardSave">
+        <div class="card_edit" id="card_edit">
+        </div>
+      </form>
+      <div class="imgButtonWrap">
+
+        <button type="button" class='card-part-btn btn btn-primary' id='divid-0'>
+                    <img src = "image/singlePart.jpg" height = '80' width = '80' /></button>
+        <button type="button" class='card-part-btn btn btn-primary' id='divid-1'>
+                    <img src = "image/updownPart.jpg" height = '80' width = '80' /></button>
+        <button type="button" class='card-part-btn btn btn-primary' id='divid-2'>
+                      <img src = "image/rightleftPart.jpg" height = '80' width = '80' /></button>
+        <div style="textalign : center">
+        </div>
+
+        <label style='margin : 5px'>IMG<input id = 'imgInput' type="file" style="display: none;">
+        </label>
+        <label style='margin : 5px'>URL<input type="file" style="display: none;">
+        </label>
+
+        <button type="button" class='btn btn-outline-primary' id='Save'>Save</button>
+      </div>
+      <img src='' id='img_out'>
+      <div id="canvas_out" style='display : inline'></div>
+    </div>
+
+
+
+  </div>
+  </div>
+
+  <!-- WARNING:  -->
+
+
+
+  </div>
+  </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src='js/html2canvas.js'></script>
+  <script src="js/colorPick.js"></script>
+  <script src="js/CardEditor.js"></script>
+  <script src='js/CardSave.js'></script>
+</body>
+
+</html>

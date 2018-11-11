@@ -1,0 +1,52 @@
+.range-control{
+  position: absolute;
+}
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+#verticalRange{
+  transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  left : -190px;
+  top : 224px;
+  width: 348px;
+  height: 8px;
+}
+
+#horizentalRange{
+  bottom : 95px;
+  right : 60px;
+  width : 152px; /* 272 - 60 *2*/
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 30px;
+    width: 30px;
+    background-image: url('/image/arrow.svg');
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    -webkit-transform: rotate(90deg);
+    cursor: pointer;
+    margin-top: -5px; /*chrome의 경우 margin-top값을 부여해야합니다.*/
+}

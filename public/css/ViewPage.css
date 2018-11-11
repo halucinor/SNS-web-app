@@ -1,0 +1,411 @@
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+
+body{
+  overflow-y: visible;
+}
+
+
+.card-display {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top : 20px;
+  margin-bottom: 20px;
+}
+
+/* Card 리스트 관련 Css */
+.card-list-container {
+  width: 100%;
+  height: 200px;
+  background-color: #f4fffc;
+  border-top: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  position: relative;
+}
+
+.card-list-wrapper {
+  position: relative;
+  height : 100%;
+  width: 1000px;
+}
+
+.card-order {
+  position: relative;
+  height: 100%;
+  padding: 0;
+  width: auto;
+  list-style-type: none;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  text-align:center;
+}
+
+.thumnail-card-transform {
+  position: absolute;
+  left: 0px;
+  transform-origin: 0% 0%;
+  transform: scale(0.35, 0.35);
+}
+
+.thumnail-item {
+  padding-top: 10px;
+  display: inline-block;
+  position: relative;
+  white-space: normal;
+}
+.thumnail-item::before{
+  content: ' ';
+  width: 107px;
+  height : 150px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 20;
+}
+.thumnail-item .card-editor{
+  text-align: left;
+}
+.card-number {
+  display: block;
+  margin-top: 7px;
+  font-size: 13px;
+}
+
+.thumnail {
+  border: 1px solid gray;
+}
+
+
+
+.thumnail-item.active {
+  background-color: #bdbdbd;
+}
+
+
+.scroll-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  margin: 10px;
+  background-color: #c69797;
+  height: 60%;
+  border-radius: ;
+  font-size: 30px;
+  border-radius: 10px;
+}
+
+.card-nav-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  border-radius: 10px;
+}
+.card-nav-btn > img{
+  width : 60px;
+}
+.card-nav-btn.left-btn {
+  left: 110px;
+}
+
+
+.card-nav-btn.right-btn {
+  right : 110px;
+}
+.modal-btn-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.view-modal-btn {
+  position: relative;
+  display: block;
+}
+#viewModal .custom-dialog{
+  max-width : 900px;
+  min-height: 700px;
+
+}
+
+#viewModal .view-close-btn{
+  width : 30px;
+  height: 30px;
+  position: absolute;
+  right : 20px;
+  top : 50px;
+}
+#viewModal .view-close-btn>img{
+  height : 100%;
+}
+
+#viewModal .contents-wrapper {
+  display: flex;
+  justify-content: center;
+  border-radius: 0px;
+  width : 900px;
+  height: 700px;
+  border: none;
+  background-color: #58655f;
+}
+
+#viewModal .modal-card-display{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#viewModal .contents-display{
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#viewModal .modal-card-nav-btn{
+  position: absolute;
+  width : 80px;
+  height: 80px;
+}
+
+#viewModal .modal-card-nav-btn.left{
+  left : 30px;
+}
+
+#viewModal .modal-card-nav-btn.right{
+  right : 30px;
+}
+
+#viewModal .card_edit{
+  margin : 20px;
+}
+
+
+#viewModal .modal-card-nav-btn>img{/
+  height: 100%;
+}
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#viewModal .card-text-nav-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#viewModal .card-text-nav-wrapper>label{
+  margin : 0 5 0 10;
+  color: white;
+}
+
+#viewModal .card-text-nav-wrapper>input{
+  text-align: right;
+}
+
+#viewModal .first-card-btn{
+  position : absolute;
+  left : 100px;
+  z-index: 1000;
+}
+#ViewModal .last-card-btn{
+  position : absolute;
+  right : 100px;
+  z-index: 1000;
+}
+
+.card-text-nav-wrapper{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  /* border-top: 1px solid gray; */
+}
+
+.card-display-wrapper .first-card-btn{
+  position : absolute;
+  left : 180px;
+}
+.card-display-wrapper .last-card-btn{
+  position : absolute;
+  right : 180px;
+}
+.card-display-wrapper .total-cards-label{
+  margin : 0 5 0 5 ;
+}
+.card-text-input{
+  text-align: right;
+  margin-left: 10px;
+}
+.subject-nav-placeholder{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 5px;
+  border: 1px solid #cfcfcf;
+  /* padding: 10px; */
+  height: 150px;
+}
+.subject-nav-placeholder .work-title{
+  white-space: nowrap;
+  text-align: center;
+  margin: 5 5 5 5;
+  font-size: 35px;
+  font-style: italic;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.subject-nav-placeholder .work-link{
+  text-decoration: none;
+  color: inherit;
+}
+
+.subject-nav{
+  text-align: center;
+}
+.subject-nav .subject-nav-manu-btn{
+  text-align: left;
+  position: relative;
+  width: 80%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-decoration-color: black; !important
+  /* text-align: right; */
+}
+.subject-title{
+  width : 80px !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-decoration-color: black; !important
+}
+.subject-nav .subject-nav-manu-btn::after{
+  position: absolute;
+  right : 8px;
+  margin-top: 10px;
+}
+.subject-nav .dropdown-menu{
+  width: 80%;
+}
+
+.dropdown-item{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.author-profile-placeholder{
+  border-radius: 5px;
+  border: 1px solid #cfcfcf;
+  margin-top: 20px;
+}
+.author-profile-placeholder .author-information-wrapper{
+  position: relative;
+  display: flex;
+  /* justify-content: center; */
+  width: 100%;
+
+}
+.author-profile-placeholder .author-img-wrapper{
+  display: inline-block;
+}
+
+.author-profile-placeholder .author-img-wrapper img{
+  margin: 10px;
+  display: inline-block;
+  width: 90px;
+  border-radius: 45px;
+}
+
+.author-profile-placeholder .author-profile-wrapper{
+  /* position: relative; */
+  display: inline-flex;
+  padding-left: 20px;
+  justify-content: center;
+  width: 300px;
+  border-left: 1px solid #cfcfcf;
+  }
+
+.author-profile-placeholder .author-profile-flex{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.author-profile-placeholder .name{
+  font-size: 30px;
+}
+
+.author-profile-placeholder .author-page-link{
+  font-size: 20px;
+}
+
+.author-profile-placeholder .author-follow-support-btn-wrapper{
+  margin-top: 10px;
+  position: relative;
+}
+.author-profile-placeholder .author-btn{
+  width : 80px;
+}
+
+.author-profile-placeholder .author-follow-btn{
+  left : 20px;
+}
+
+.work-subscribe-placeholder{
+  border-radius: 5px;
+  border: 1px solid #cfcfcf;
+  padding: 5px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.work-subscribe-placeholder .work-subscribe-wrapper{
+  display: inline-block;
+  /* text-align: center; */
+  margin-left: 20px;
+}
+.work-subscribe-placeholder .work-subscribe-button-wrapper{
+  text-align: right;
+  display: inline-block;
+}
+
+.work-subscribe-placeholder .work-subscribe-text{
+  font-size: 15px;
+  font-family: 'Hanna', sans-serif;
+}
+
+.work-subscribe-placeholder button{
+  margin: 5px;
+}
+
+.card-share-btn-placeholder{
+  position: absolute;
+  right : 20px;
+  bottom: -50px;
+  border-radius: 5px;
+  border: 1px solid #cfcfcf;
+}
+
+.card-share-btn-placeholder .share-text{
+  text-align: center;
+}
+
+.card-share-btn-placeholder img{
+  width : 50px;
+  margin: 10px;
+}
